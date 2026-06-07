@@ -1,0 +1,18 @@
+[Unit]
+Description=Ka Education — self-hosted education portal
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/ka-education
+EnvironmentFile=/opt/ka-education/.env
+ExecStart=/usr/bin/node /opt/ka-education/dist/server.mjs
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ka-education
+
+[Install]
+WantedBy=multi-user.target
